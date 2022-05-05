@@ -4,23 +4,27 @@ package _01_ticket
 class Bag(private var amount: Long, private var invitation: Invitation?) {
   private var ticket: Ticket? = null
 
+  fun hold(ticket: Ticket): Long = if (hasInvitation()) {
+    setTicket(ticket)
+    0;
+  } else {
+    minusAmount(ticket.fee)
+    setTicket(ticket)
+    ticket.fee;
+  }
+
   /** 초대장 보유 여부 */
-  fun hasInvitation(): Boolean {
+  private fun hasInvitation(): Boolean {
     return invitation != null
   }
 
-  /** 티켓 소유 여부 */
-  fun hasTicket(): Boolean {
-    return ticket != null
-  }
-
   /** 초대장을 티켓으로 교환 */
-  fun setTicket(ticket: Ticket) {
+  private fun setTicket(ticket: Ticket) {
     this.ticket = ticket
   }
 
   /** 현금 감소 */
-  fun minusAmount(amount: Long) {
+  private fun minusAmount(amount: Long) {
     this.amount -= amount
   }
 }
