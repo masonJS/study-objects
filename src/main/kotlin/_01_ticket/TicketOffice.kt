@@ -9,10 +9,14 @@ class TicketOffice(private var amount: Long, vararg tickets: Ticket) {
     this.tickets.addAll(listOf(*tickets))
   }
 
-  val ticket: Ticket
+  fun sellTicketTo(audience: Audience) {
+    plusAmount(audience.buy(ticket))
+  }
+
+  private val ticket: Ticket
     get() = tickets.removeAt(0)
 
-  fun plusAmount(amount: Long) {
+  private fun plusAmount(amount: Long) {
     this.amount += amount
   }
 }
