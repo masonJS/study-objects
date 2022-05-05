@@ -2,7 +2,7 @@ package _01_ticket
 
 import java.util.*
 
-class TicketOffice(private var amount: Long, vararg tickets: Ticket) {
+class TicketOffice(var amount: Long, vararg tickets: Ticket) {
   private val tickets: MutableList<Ticket> = ArrayList()
 
   init {

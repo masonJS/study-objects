@@ -1,7 +1,7 @@
 package _01_ticket
 
 /** (초대장 + 현금) 이거나 현금을 소지한 경우에 대한 생성자 */
-class Bag(private var amount: Long, private var invitation: Invitation?) {
+class Bag(var amount: Long, private var invitation: Invitation? = null) {
   private var ticket: Ticket? = null
 
   fun hold(ticket: Ticket): Long = if (hasInvitation()) {
